@@ -2,6 +2,7 @@ package com.app.entity.modal;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +21,11 @@ import lombok.*;
 @Entity
 @Table(name = "doctor_timetable_tbl")
 public class DoctorTimeTable extends BaseEntity {
-	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-	private LocalDateTime startTime;
+	@DateTimeFormat(pattern = "hh:mm:ss")
+	private LocalTime startTime;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-	private LocalDateTime endTime;
+	@DateTimeFormat(pattern = "hh:mm:ss")
+	private LocalTime endTime;
 
 	@Max(value = 6)
 	@Min(value = 0)
@@ -34,40 +35,43 @@ public class DoctorTimeTable extends BaseEntity {
 	@Min(value = 15)
 	private int slotDuration; // 30 mins
 
-	private LocalDateTime breakTime;// duration 30 min
+	private LocalTime breakTime;// duration 30 min
 
 	private int breakDuration = 30;
 
 	@ElementCollection
-	private List<LocalDateTime> availableSlots = new ArrayList<>();
+	private List<LocalTime> availableSlots = new ArrayList<>();
 
-	public DoctorTimeTable() {
-		System.out.println("In def constr : " + getClass().getName());
-	}
+	
 
-	public DoctorTimeTable(String id, LocalDateTime startTime, LocalDateTime endTime, int weekDays, int slotDuration,
-			List<LocalDateTime> availableSlots) {
+	
+
+	public DoctorTimeTable(LocalTime startTime, LocalTime endTime, @Max(6) @Min(0) int weekDays,
+			@Max(30) @Min(15) int slotDuration, LocalTime breakTime, int breakDuration) {
 		super();
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.weekDays = weekDays;
 		this.slotDuration = slotDuration;
-		this.availableSlots = availableSlots;
+		this.breakTime = breakTime;
+		this.breakDuration = breakDuration;
 	}
 
-	public LocalDateTime getStartTime() {
+
+
+	public LocalTime getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(LocalDateTime startTime) {
+	public void setStartTime(LocalTime startTime) {
 		this.startTime = startTime;
 	}
 
-	public LocalDateTime getEndTime() {
+	public LocalTime getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(LocalDateTime endTime) {
+	public void setEndTime(LocalTime endTime) {
 		this.endTime = endTime;
 	}
 
@@ -87,11 +91,11 @@ public class DoctorTimeTable extends BaseEntity {
 		this.slotDuration = slotDuration;
 	}
 
-	public List<LocalDateTime> getAvailableSlots() {
+	public List<LocalTime> getAvailableSlots() {
 		return availableSlots;
 	}
 
-	public void setAvailableSlots(List<LocalDateTime> availableSlots) {
+	public void setAvailableSlots(List<LocalTime> availableSlots) {
 		this.availableSlots = availableSlots;
 	}
 
@@ -102,7 +106,7 @@ public class DoctorTimeTable extends BaseEntity {
 	}
 
 	// doctor supplied values for advance bookings
-	void openSlots(int noOfDays) {
+	public void openSlots(int noOfDays) {
 		int totalMinutes = (int) ChronoUnit.MINUTES.between(startTime, endTime);
 		int slots = totalMinutes / slotDuration;
 
@@ -123,6 +127,8 @@ public class DoctorTimeTable extends BaseEntity {
 				availableSlots.add(startTime.plusMinutes(i * slotDuration));
 			}
 		}
+		
+		availableSlots.forEach(e->System.out.println(e));
 	}
 
 }
