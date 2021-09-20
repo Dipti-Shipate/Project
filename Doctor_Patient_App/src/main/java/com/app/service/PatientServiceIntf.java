@@ -1,9 +1,6 @@
 package com.app.service;
 
-import java.util.List;
-
 import com.app.dto.LoginResponse;
-import com.app.entity.modal.Appointment;
 import com.app.entity.modal.Patient;
 
 public interface PatientServiceIntf {

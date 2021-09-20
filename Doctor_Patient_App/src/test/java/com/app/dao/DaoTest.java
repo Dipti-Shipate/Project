@@ -15,11 +15,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.app.entity.modal.Doctor;
 import com.app.entity.modal.DoctorTimeTable;
 import com.app.entity.modal.Gender;
 import com.app.entity.modal.Patient;
 import com.app.repository.DoctorRepository;
 import com.app.repository.PatientRepository;
+import com.app.service.DoctorServiceIntf;
 import com.app.service.PatientServiceIntf;
 
 @SpringBootTest
@@ -30,6 +32,9 @@ class DaoTest {
 
 	@Autowired 
 	private DoctorRepository doctorRepo;
+	
+	@Autowired
+	private DoctorServiceIntf doctorService;
 
 	@Test
 	void savePatient() {
@@ -62,6 +67,25 @@ class DaoTest {
 	}
 
 	
+	@Test
+	void saveDoctor() {
+		
+		 Doctor p = new Doctor(null, "Hindi", "covid", "BAMS", LocalDate.parse("2000-08-08"), true, "e1", "e1", "e1", "e1@gmail.com", "e1@123", LocalDate.parse("1997-07-07"), Gender.MALE, "9809876756");
+		doctorRepo.save(p);
+		 assertTrue(true);
+	}
 	
-	
+	@Test
+	void getAllDoctorDetail() {
+		List<Doctor> allDoctors = doctorService.getAllDoctors();
+		allDoctors.forEach(System.out::println);
+	}
+
+	@Test
+	void deleteDoctorTest() {
+		System.out.println(doctorService.deleteDoctorById(6l));
+		List<Doctor> allDoctors = doctorService.getAllDoctors();
+		allDoctors.forEach(System.out::println);
+	}
+
 }

@@ -11,6 +11,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
@@ -40,6 +41,7 @@ public class DoctorTimeTable extends BaseEntity {
 	private int breakDuration = 30;
 
 	@ElementCollection
+	//@Transient
 	private List<LocalTime> availableSlots = new ArrayList<>();
 
 	

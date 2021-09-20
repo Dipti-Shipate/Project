@@ -30,10 +30,10 @@ public class AppointmentController {
 		System.out.println("in constr of "+getClass().getName());
 	}
 	
-	@GetMapping("/specialization")//after clicking on physician/dentist block
-	ResponseEntity<?> getAllDoctorsBySpecialization(@PathVariable String specialization){
-		return null ;
-	}
+//	@GetMapping("/specialization")//after clicking on physician/dentist block
+//	ResponseEntity<?> getAllDoctorsBySpecialization(@PathVariable String specialization){
+//		return null ;
+//	}
 	
 	@GetMapping("specialization/{city}")
 	public ResponseEntity<?>getSpecializationByCity(@PathVariable String city){

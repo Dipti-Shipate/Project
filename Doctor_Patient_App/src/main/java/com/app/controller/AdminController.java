@@ -17,16 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entity.modal.Doctor;
 import com.app.service.DoctorServiceIntf;
-import com.app.service.PatientServiceIntf;
 
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
 	@Autowired
 	private DoctorServiceIntf doctorService;
-	
-	@Autowired
-	private PatientServiceIntf patientService;
 	
 	public AdminController() {
 		System.out.println("in constr of "+getClass().getName());
