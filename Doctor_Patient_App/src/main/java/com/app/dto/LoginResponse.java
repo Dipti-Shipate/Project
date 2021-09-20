@@ -1,45 +1,38 @@
 package com.app.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-
 public class LoginResponse {
-	private Long patientId;
-	private String patientFirstName;
+	private Long userId;
+	private String userFirstName;
 	
 	public LoginResponse() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public LoginResponse(Long patientId, String patientFirstName) {
+	public LoginResponse(Long userId, String userFirstName) {
 		super();
-		this.patientId = patientId;
-		this.patientFirstName = patientFirstName;
+		this.userId = userId;
+		this.userFirstName = userFirstName;
 	}
 
-	public Long getPatientId() {
-		return patientId;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setPatientId(Long patientId) {
-		this.patientId = patientId;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
-	public String getPatientFirstName() {
-		return patientFirstName;
+	public String getUserFirstName() {
+		return userFirstName;
 	}
 
-	public void setPatientFirstName(String patientFirstName) {
-		this.patientFirstName = patientFirstName;
+	public void setPatientFirstName(String userFirstName) {
+		this.userFirstName = userFirstName;
 	}
 
 	@Override
 	public String toString() {
-		return "LoginResponse [patientId=" + patientId + ", patientFirstName=" + patientFirstName + "]";
+		return "LoginResponse [patientId=" + userId + ", patientFirstName=" + userFirstName + "]";
 	}
 	
 	

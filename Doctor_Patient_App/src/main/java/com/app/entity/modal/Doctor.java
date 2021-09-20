@@ -60,7 +60,7 @@ public class Doctor extends User{
 	private DoctorTimeTable timeSlot;
 	
 	@OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL,orphanRemoval = true)
-	private List<Appointement> appointement = new ArrayList<>();
+	private List<Appointment> appointement = new ArrayList<>();
 	
 	
 	public Doctor() {
@@ -187,12 +187,12 @@ public class Doctor extends User{
 	}
 
 
-	public List<Appointement> getAppointement() {
+	public List<Appointment> getAppointement() {
 		return appointement;
 	}
 
 
-	public void setAppointement(List<Appointement> appointement) {
+	public void setAppointement(List<Appointment> appointement) {
 		this.appointement = appointement;
 	}
 

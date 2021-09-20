@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="doctor_appointment_tbl")
-public class Appointement extends BaseEntity{
+public class Appointment extends BaseEntity{
 
 	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm:ss")
 	private LocalDateTime appointmentTime;
@@ -44,11 +44,11 @@ public class Appointement extends BaseEntity{
 	//@JsonIgnore
 	private Patient patient;
 	
-	public Appointement() {
+	public Appointment() {
 		System.out.println("In def constr : "+getClass().getName());
 	}
 
-	public Appointement(LocalDateTime appointmentTime, AppointmentType appointmentType, String ailment,
+	public Appointment(LocalDateTime appointmentTime, AppointmentType appointmentType, String ailment,
 			Doctor doctor) {
 		super();
 		this.appointmentTime = appointmentTime;

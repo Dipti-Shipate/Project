@@ -1,18 +1,24 @@
 package com.app.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.LoginRequest;
+import com.app.entity.modal.Appointment;
 import com.app.entity.modal.Patient;
+import com.app.service.AppointmentServiceIntf;
 import com.app.service.PatientServiceIntf;
 
 @RestController
@@ -22,15 +28,16 @@ public class PatientController {
 	
 	@Autowired
 	PatientServiceIntf patientService;
+	
+	@Autowired
+	AppointmentServiceIntf appointmentService;
 
-	public PatientController() {
-		
+	public PatientController() {		
 		System.out.println("In Constructor : "+getClass().getName());
-		
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> saveUser(@RequestBody @Valid Patient patient) {
+	public ResponseEntity<?> savePatient(@RequestBody @Valid Patient patient) {
 		
 		System.out.println("In class : "+getClass().getName());
 		System.out.println("User : "+patient);

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.app.dto.LoginResponse;
 import com.app.entity.modal.Patient;
-import com.app.entity.modal.User;
 import com.app.repository.PatientRepository;
 
 @Service
