@@ -1,7 +1,5 @@
 package com.app.entity.modal;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -9,23 +7,15 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-import lombok.*;
 
 @Entity
 @Table(name = "doctor_timetable_tbl")
 public class DoctorTimeTable extends BaseEntity {
-	@DateTimeFormat(pattern = "hh:mm:ss")
 	private LocalTime startTime;
 
-	@DateTimeFormat(pattern = "hh:mm:ss")
 	private LocalTime endTime;
 
 	@Max(value = 6)
@@ -70,7 +60,7 @@ public class DoctorTimeTable extends BaseEntity {
 	}
 
 	public LocalTime getEndTime() {
-		return endTime;
+		return endTime; 
 	}
 
 	public void setEndTime(LocalTime endTime) {
@@ -97,9 +87,9 @@ public class DoctorTimeTable extends BaseEntity {
 		return availableSlots;
 	}
 
-	public void setAvailableSlots(List<LocalTime> availableSlots) {
-		this.availableSlots = availableSlots;
-	}
+//	public void setAvailableSlots(List<LocalTime> availableSlots) {
+//		this.availableSlots = availableSlots;
+//	}
 
 	@Override
 	public String toString() {
@@ -111,7 +101,11 @@ public class DoctorTimeTable extends BaseEntity {
 	public void openSlots(int noOfDays) {
 		int totalMinutes = (int) ChronoUnit.MINUTES.between(startTime, endTime);
 		int slots = totalMinutes / slotDuration;
+		
+		System.out.println("Slots : "+slots);
+		LocalTime breakTime = LocalTime.parse("12:10:00"); 
 
+		int breakDuration = 20;
 		// ---------------------------------
 //				MAKE SURE TO SKIP SATURDAY / SUNDAY IN BOOKINGS
 //				HINT: COMPARE CURRENT DAY WITH WEEK DAY AND PROCEED
@@ -126,7 +120,20 @@ public class DoctorTimeTable extends BaseEntity {
 		for (int i = 1; i <= slots; i++) {
 			remainingMinutes -= slotDuration;
 			if (remainingMinutes >= slotDuration) {
-				availableSlots.add(startTime.plusMinutes(i * slotDuration));
+				LocalTime t = availableSlots.get(i-1);
+				System.out.println("time : "+t);
+				if(t.plusMinutes(slotDuration).equals(breakTime)) { //12:10 == 
+					System.out.println("IF BLOCK ");
+					//continue;
+					LocalTime t1 =  availableSlots.get(i-1);
+					t1.plusMinutes(breakDuration);
+					availableSlots.add(LocalTime.parse("15:15:15"));
+
+				} else {
+					System.out.println("i : "+i);
+					availableSlots.add(startTime.plusMinutes(i * slotDuration));
+					
+				}
 			}
 		}
 		

@@ -33,7 +33,6 @@ public class PatientController {
 	
 	@PostMapping
 	public ResponseEntity<?> savePatient(@RequestBody @Valid Patient patient) {
-		
 		System.out.println("In class : "+getClass().getName());
 		System.out.println("User : "+patient);
 		return new ResponseEntity<>(patientService.savePatient(patient),HttpStatus.CREATED);

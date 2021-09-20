@@ -1,5 +1,8 @@
 package com.app.service;
 
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -8,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.entity.modal.Appointment;
+import com.app.entity.modal.DoctorTimeTable;
 import com.app.repository.AppointmentRepository;
+import com.app.repository.DoctorTimeTableRepository;
 
 @Service
 @Transactional
@@ -16,6 +21,9 @@ public class AppointmentServiceImpl implements AppointmentServiceIntf {
 
 	@Autowired
 	AppointmentRepository appointmentRepo;
+	
+	@Autowired
+	DoctorTimeTableRepository doctorTimeTableRepo;
 	
 	@Override
 	public String cancelAppointment(Long userId, Long appointmentId) {
@@ -48,4 +56,12 @@ public class AppointmentServiceImpl implements AppointmentServiceIntf {
 		return appointmentRepo.getAllAppoitmentsHistoryForDoctor(doctorId);
 	}
 
+	@Override
+	public DoctorTimeTable generateTimeTableForDoctor(DoctorTimeTable timeTable) {
+		DoctorTimeTable dTimeTable = doctorTimeTableRepo.save(timeTable);
+		dTimeTable.openSlots(6);
+		System.out.println("****************");
+		dTimeTable.getAvailableSlots().forEach(p -> System.out.println(p+"***") );
+		return dTimeTable;
+	}
 }

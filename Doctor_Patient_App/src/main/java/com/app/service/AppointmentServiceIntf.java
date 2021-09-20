@@ -3,6 +3,7 @@ package com.app.service;
 import java.util.List;
 
 import com.app.entity.modal.Appointment;
+import com.app.entity.modal.DoctorTimeTable;
 
 public interface AppointmentServiceIntf {
 	
@@ -24,5 +25,6 @@ public interface AppointmentServiceIntf {
 	//get list of all appointment history for doctor
 	List<Appointment> getAllAppoitmentsHistoryForDoctor(Long doctorId);
 
-	
+	//generate time table for doctor [doctor's time table pojo]
+	DoctorTimeTable generateTimeTableForDoctor(DoctorTimeTable timeTable);
 }

@@ -8,10 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entity.modal.Appointment;
+import com.app.entity.modal.DoctorTimeTable;
 import com.app.service.AppointmentServiceIntf;
 import com.app.service.DoctorServiceIntf;
 
@@ -25,6 +28,7 @@ public class AppointmentController {
 	
 	@Autowired
 	DoctorServiceIntf doctorService;
+	
 
 	public AppointmentController() {
 		System.out.println("in constr of "+getClass().getName());
@@ -46,6 +50,13 @@ public class AppointmentController {
 		System.out.println("in get doctor's specializations ");
 		return new ResponseEntity<>(doctorService.getSpecializationsByCity(city), HttpStatus.FOUND);
 	}
+	
+	@PostMapping
+	public ResponseEntity<?> createDoctorTimetable(@RequestBody  DoctorTimeTable timeTable) {
+		System.out.println("in create doctor's time table  : "+timeTable);
+		return new ResponseEntity<>(appointmentService.generateTimeTableForDoctor(timeTable),HttpStatus.CREATED);
+	}
+
 
 	@GetMapping("currAppointmentP/{patient_id}")
 	public List<Appointment> getAllCurrentAppoinments(@PathVariable Long patient_id){
@@ -76,5 +87,5 @@ public class AppointmentController {
 		System.out.println("in get all appointment history for doctor "+doctor_id);
 		return appointmentService.getAllAppoitmentsHistoryForDoctor(doctor_id);
 	}
-
+	
 }
