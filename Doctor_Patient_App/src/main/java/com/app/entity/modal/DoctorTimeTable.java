@@ -34,7 +34,7 @@ public class DoctorTimeTable extends BaseEntity {
 
 	@Max(value = 30)
 	@Min(value = 15)
-	private int slotDuration; // 30 mins
+	private int slotDuration; // 30 mins [default]
 
 	private LocalTime breakTime;// duration 30 min
 
