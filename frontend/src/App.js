@@ -6,6 +6,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Login from './components/Login';
 import UserSignUp from './components/UserSignUp';
+import UserDashboard from './components/UserDashboard';
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,6 +33,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/user-dashboard">
+          <UserDashboard />
         </Route>
       </Switch>
       <Footer />
