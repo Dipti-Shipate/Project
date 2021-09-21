@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import About from './components/About';
 import Contact from './components/Contact';
 import Login from './components/Login';
-import UserSignUp from './components/UserSignUp';
+import PatientSignUp from './components/PatientSignUp';
 import UserDashboard from './components/UserDashboard';
 import {
   BrowserRouter as Router,
@@ -28,8 +28,8 @@ function App() {
         <Route exact path="/contact">
           <Contact />
         </Route>
-        <Route exact path="/user-sign-up">
-          <UserSignUp />
+        <Route exact path="/patient-sign-up">
+          <PatientSignUp />
         </Route>
         <Route exact path="/login">
           <Login />
