@@ -23,7 +23,7 @@ class PatientSignUp extends Component {
 
     signUp = e => {
         e.preventDefault();
-        let user = {
+        let patient = {
             userName: this.state.userName,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -34,7 +34,7 @@ class PatientSignUp extends Component {
             mobileNo: this.state.mobileNo
         };
 
-        APIService.addUser(user)
+        APIService.addPatient(patient)
             .then(resp => {
                 console.log(resp.data); //actual response data sent by back end
                 this.setState({ message: 'User added successfully.' });
@@ -44,7 +44,7 @@ class PatientSignUp extends Component {
                 console.error("in err ", err.response.data);
                 //err.response.data => DTO on the server side : ErrorResponse
                 alert(err.response.data.message);
-                this.props.history.push('/');
+                this.props.history.push('/patient-sign-up');
             });
     }
 
