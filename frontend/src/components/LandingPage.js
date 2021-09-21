@@ -23,7 +23,7 @@ const LandingPage = () => {
                                     <p className="display-6 text-light text-center">Book appoints on the go with best specialist doctors in your city.</p>
                                 </div>
                                 <div>
-                                    <Link className="btn btn-link btn-lg btn-outline-light button1 text-uppercase text-decoration-none mx-3" to="/user-sign-up">Sign Up</Link>
+                                    <Link className="btn btn-link btn-lg btn-outline-light button1 text-uppercase text-decoration-none mx-3" to="/patient-sign-up">Sign Up</Link>
                                     <Link className="btn btn-link btn-lg btn-light button2 text-dark text-uppercase text-decoration-none mx-3" to="/login">Login</Link>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@ const LandingPage = () => {
                                     <p className="display-6 text-light text-center">Book your required lab test at the pathology of your choice in your city.</p>
                                 </div>
                                 <div>
-                                    <Link className="btn btn-link btn-lg btn-outline-light button1 text-light text-uppercase text-decoration-none mx-3" to="/user-sign-up">Sign Up</Link>
+                                    <Link className="btn btn-link btn-lg btn-outline-light button1 text-light text-uppercase text-decoration-none mx-3" to="/patient-sign-up">Sign Up</Link>
                                     <Link className="btn btn-link btn-lg btn-light button2 text-dark text-uppercase text-decoration-none mx-3" to="/login">Login</Link>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@ const LandingPage = () => {
                                     <p className="display-6 text-light text-center">Get information about blood donation centres and donate blood at time and place of your choice.</p>
                                 </div>
                                 <div>
-                                    <Link className="btn btn-link btn-lg btn-outline-light button1 text-light text-uppercase text-decoration-none mx-3" to="/user-sign-up">Sign Up</Link>
+                                    <Link className="btn btn-link btn-lg btn-outline-light button1 text-light text-uppercase text-decoration-none mx-3" to="/patient-sign-up">Sign Up</Link>
                                     <Link className="btn btn-link btn-lg btn-light button2 text-dark text-uppercase text-decoration-none mx-3" to="/login">Login</Link>
                                 </div>
                             </div>
