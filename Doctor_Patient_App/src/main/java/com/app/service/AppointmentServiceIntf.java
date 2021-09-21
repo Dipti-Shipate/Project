@@ -26,5 +26,5 @@ public interface AppointmentServiceIntf {
 	List<Appointment> getAllAppoitmentsHistoryForDoctor(Long doctorId);
 
 	//generate time table for doctor [doctor's time table pojo]
-	DoctorTimeTable generateTimeTableForDoctor(DoctorTimeTable timeTable);
+	DoctorTimeTable generateTimeTableForDoctor(DoctorTimeTable timeTable, Long doctor_id);
 }

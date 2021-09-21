@@ -75,7 +75,6 @@ class DaoTest {
 	
 	@Test
 	void saveDoctor() {
-		
 		 Doctor p = new Doctor(null, "Hindi", "covid", "BAMS", LocalDate.parse("2000-08-08"), true, "e1", "e1", "e1", "e1@gmail.com", "e1@123", LocalDate.parse("1997-07-07"), Gender.MALE, "9809876756");
 		doctorRepo.save(p);
 		 assertTrue(true);
@@ -103,11 +102,13 @@ class DaoTest {
 	@Test
 	void saveDoctorTimeTable() {
 		
-		DoctorTimeTable tt = new DoctorTimeTable(LocalTime.parse("08:00:00"), LocalTime.parse("12:00:00"), 6, 30, LocalTime.parse("11:00:00"), 30);
-		DoctorTimeTable g = appointmentService.generateTimeTableForDoctor(tt);
+		DoctorTimeTable tt = new DoctorTimeTable(LocalTime.parse("07:00:00"), LocalTime.parse("14:00:00"), 6, 30, LocalTime.parse("12:00:00"), 30);
+		DoctorTimeTable g = appointmentService.generateTimeTableForDoctor(tt, 2l);
 		System.out.println(g);
 		System.out.println(g.getAvailableSlots());
 		 assertTrue(true);
 	}
+	
+	
 	
 }

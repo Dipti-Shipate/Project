@@ -51,10 +51,10 @@ public class AppointmentController {
 		return new ResponseEntity<>(doctorService.getSpecializationsByCity(city), HttpStatus.FOUND);
 	}
 	
-	@PostMapping
-	public ResponseEntity<?> createDoctorTimetable(@RequestBody  DoctorTimeTable timeTable) {
-		System.out.println("in create doctor's time table  : "+timeTable);
-		return new ResponseEntity<>(appointmentService.generateTimeTableForDoctor(timeTable),HttpStatus.CREATED);
+	@PostMapping("createTimeTable/{doctor_id}")
+	public ResponseEntity<?> createDoctorTimeTable(@RequestBody  DoctorTimeTable timeTable, @PathVariable Long doctor_id) {
+		System.out.println("in create doctor's time table  : "+timeTable+" : "+doctor_id);
+		return new ResponseEntity<>(appointmentService.generateTimeTableForDoctor(timeTable, doctor_id),HttpStatus.CREATED);
 	}
 
 

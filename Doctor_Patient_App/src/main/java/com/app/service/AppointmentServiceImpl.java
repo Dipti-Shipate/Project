@@ -4,15 +4,19 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.custome_exception.UserHandlingException;
 import com.app.entity.modal.Appointment;
+import com.app.entity.modal.Doctor;
 import com.app.entity.modal.DoctorTimeTable;
 import com.app.repository.AppointmentRepository;
+import com.app.repository.DoctorRepository;
 import com.app.repository.DoctorTimeTableRepository;
 
 @Service
@@ -24,6 +28,9 @@ public class AppointmentServiceImpl implements AppointmentServiceIntf {
 	
 	@Autowired
 	DoctorTimeTableRepository doctorTimeTableRepo;
+	
+	@Autowired
+	DoctorRepository doctorRepo;
 	
 	@Override
 	public String cancelAppointment(Long userId, Long appointmentId) {
@@ -57,11 +64,11 @@ public class AppointmentServiceImpl implements AppointmentServiceIntf {
 	}
 
 	@Override
-	public DoctorTimeTable generateTimeTableForDoctor(DoctorTimeTable timeTable) {
+	public DoctorTimeTable generateTimeTableForDoctor(DoctorTimeTable timeTable, Long doctor_id) {
 		DoctorTimeTable dTimeTable = doctorTimeTableRepo.save(timeTable);
 		dTimeTable.openSlots(6);
-		System.out.println("****************");
-		dTimeTable.getAvailableSlots().forEach(p -> System.out.println(p+"***") );
+		Doctor doctor = doctorRepo.findById(doctor_id).orElseThrow(() -> new UserHandlingException("Doctor not found"));
+		doctor.setTimeSlot(dTimeTable);
 		return dTimeTable;
 	}
 }
