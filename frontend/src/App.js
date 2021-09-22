@@ -6,7 +6,9 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Login from './components/Login';
 import PatientSignUp from './components/PatientSignUp';
-import UserDashboard from './components/UserDashboard';
+import PatientDashboard from './components/PatientDashboard';
+import AdminDashboard from './components/AdminDashboard';
+import DoctorDashboard from './components/DoctorDashboard';
 import {
   BrowserRouter as Router,
   Switch,
@@ -34,8 +36,14 @@ function App() {
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/user-dashboard">
-          <UserDashboard />
+        <Route exact path="/patient-dashboard">
+          <PatientDashboard />
+        </Route>
+        <Route exact path="/admin-dashboard">
+          <AdminDashboard />
+        </Route>
+        <Route exact path="/doctor-dashboard">
+          <DoctorDashboard />
         </Route>
       </Switch>
       <Footer />

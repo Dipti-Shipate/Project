@@ -39,7 +39,7 @@ class PatientSignUp extends Component {
                 console.log(resp.data); //actual response data sent by back end
                 this.setState({ message: 'User added successfully.' });
                 console.log(this.state.message);
-                this.props.history.push('/user-dashboard');
+                this.props.history.push('/patient-dashboard');
             }).catch(err => {
                 console.error("in err ", err.response.data);
                 //err.response.data => DTO on the server side : ErrorResponse

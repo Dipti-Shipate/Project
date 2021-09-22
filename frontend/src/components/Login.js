@@ -1,6 +1,33 @@
 import React, { Component } from 'react'
+import APIService from '../service/APIService';
 
 class Login extends Component {
+
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            email: '',
+            password: '',
+            message: null
+        }
+
+        this.login = this.login.bind(this);
+    }
+
+    login = e => {
+        e.preventDefault();
+        let user = {
+            email: this.state.email,
+            password: this.state.password,
+        };
+
+        APIService.login();
+    
+    }
+
+    onChange = e => this.setState({ [e.target.name]: e.target.value });
+    
     render() {
         return (
             <>
@@ -10,18 +37,18 @@ class Login extends Component {
                         <div className="form-group row mt-3 justify-content-center">
                             <label htmlFor="email" className="col-1 col-form-label">Email</label>
                             <div className="col-5">
-                                <input type="email" id="email" className="form-control" placeholder="abc@xyz.com" />
+                                <input type="email" id="email" className="form-control" name="email" value={this.state.email} onChange={this.onChange} />
                             </div>
                         </div>
                         <div className="form-group row my-3 justify-content-center">
                             <label htmlFor="pwd" className="col-1 col-form-label">Password</label>
                             <div className="col-5">
-                                <input type="password" id="pwd" className="form-control" placeholder="Enter Password" />
+                                <input type="password" id="pwd" className="form-control" name="password" value={this.state.password} onChange={this.onChange} />
                             </div>
                         </div>
                         <div className="form-group row justify-content-center">
                             <div className="offset-8">
-                                <button className="btn btn-lg btn-primary text-uppercase mt-3">Login</button>
+                                <button className="btn btn-lg btn-primary text-uppercase mt-3" onClick={this.signUp}>Login</button>
                             </div>
                         </div>
                     </form>
