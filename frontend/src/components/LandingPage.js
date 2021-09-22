@@ -3,7 +3,7 @@ import './LandingPage.css';
 import { Link } from 'react-router-dom';
 
 // const toLogin = () => {
-//     return <Link to="/login">Login</Link>
+//     return <Link to="/userLogin">Login</Link>
 // }
 
 const LandingPage = () => {
@@ -24,7 +24,7 @@ const LandingPage = () => {
                                 </div>
                                 <div>
                                     <Link className="btn btn-link btn-lg btn-outline-light button1 text-uppercase text-decoration-none mx-3" to="/patient-sign-up">Sign Up</Link>
-                                    <Link className="btn btn-link btn-lg btn-light button2 text-dark text-uppercase text-decoration-none mx-3" to="/login">Login</Link>
+                                    <Link className="btn btn-link btn-lg btn-light button2 text-dark text-uppercase text-decoration-none mx-3" to="/userLogin">Login</Link>
                                 </div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@ const LandingPage = () => {
                                 </div>
                                 <div>
                                     <Link className="btn btn-link btn-lg btn-outline-light button1 text-light text-uppercase text-decoration-none mx-3" to="/patient-sign-up">Sign Up</Link>
-                                    <Link className="btn btn-link btn-lg btn-light button2 text-dark text-uppercase text-decoration-none mx-3" to="/login">Login</Link>
+                                    <Link className="btn btn-link btn-lg btn-light button2 text-dark text-uppercase text-decoration-none mx-3" to="/userLogin">Login</Link>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@ const LandingPage = () => {
                                 </div>
                                 <div>
                                     <Link className="btn btn-link btn-lg btn-outline-light button1 text-light text-uppercase text-decoration-none mx-3" to="/patient-sign-up">Sign Up</Link>
-                                    <Link className="btn btn-link btn-lg btn-light button2 text-dark text-uppercase text-decoration-none mx-3" to="/login">Login</Link>
+                                    <Link className="btn btn-link btn-lg btn-light button2 text-dark text-uppercase text-decoration-none mx-3" to="/userLogin">Login</Link>
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import About from './components/About';
 import Contact from './components/Contact';
-import Login from './components/Login';
+import UserLogin from './components/UserLogin';
 import PatientSignUp from './components/PatientSignUp';
 import PatientDashboard from './components/PatientDashboard';
 import AdminDashboard from './components/AdminDashboard';
@@ -12,7 +12,7 @@ import DoctorDashboard from './components/DoctorDashboard';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
 } from 'react-router-dom';
 
 function App() {
@@ -33,16 +33,16 @@ function App() {
         <Route exact path="/patient-sign-up">
           <PatientSignUp />
         </Route>
-        <Route exact path="/login">
-          <Login />
+        <Route exact path="/userLogin">
+          <UserLogin />
         </Route>
-        <Route exact path="/patient-dashboard">
+        <Route exact path="/patientDashboard">
           <PatientDashboard />
         </Route>
-        <Route exact path="/admin-dashboard">
+        <Route exact path="/adminDashboard">
           <AdminDashboard />
         </Route>
-        <Route exact path="/doctor-dashboard">
+        <Route exact path="/doctorDashboard">
           <DoctorDashboard />
         </Route>
       </Switch>
